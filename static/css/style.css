@@ -1,0 +1,264 @@
+body {
+  background: #000942;
+  font-family: 'Muli', sans-serif;
+  color: white;
+}
+.container_p {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container_p p {
+  font-size: 18px;
+  color: #333;
+}
+
+.container_p p:first-of-type {
+  margin-top: 0;
+}
+
+.container_p p:last-of-type {
+  margin-bottom: 0;
+}
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #1a1a2e;
+}
+.top-nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.top-nav ul li {
+  margin: 0 15px;
+}
+.top-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.top-nav ul li a:hover {
+  color: #f39c12;
+}
+.top-nav button {
+  background-color: #f39c12;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.top-nav button:hover {
+  background-color: #d87d02;
+}
+.header_div {
+  padding: 50px 0;
+  background: #4D618A;
+}
+.header_div h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.header_div p {
+  font-size: 1.25rem;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+.card .card-body {
+  padding: 20px;
+}
+.card .card-body h5 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  color: white;
+}
+.card .card-body a {
+  color: white;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.card .card-body a:hover {
+  color: #f39c12;
+}
+footer {
+  background: #1a1a2e;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+footer ul li {
+  display: inline;
+  margin: 0 10px;
+}
+footer ul li a {
+  color: white;
+  text-decoration: none;
+}
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+.about-us{
+  height: 100vh;
+  width: 100%;
+  padding: 90px 0;
+  background: #ddd;
+}
+.pic{
+  height: auto;
+  width:  302px;
+}
+#projects {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.card-body {
+    padding: 20px;
+    background-color: #E89225;
+}
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+.card h5 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+.close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default, but can be controlled by inline style */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+  max-width: 600px; /* Limit width */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.about{
+  width: 1130px;
+  max-width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.text{
+  width: 540px;
+}
+.text h2{
+  font-size: 90px;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+}
+.text h5{
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+span{
+  color: #4070f4;
+}
+.text p{
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+.data{
+  margin-top: 30px;
+}
+
+.data:hover {
+
+}
+
+.hire{
+  font-size: 18px;
+  background: #4070f4;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  transition: 0.5s;
+}
+.hire:hover{
+  background: #000;
+  border: 1px solid #4070f4;
+}

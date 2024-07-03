@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>An About me Page</title>
+  <!---Custom Css File!--->
+  <meta name="view-transition" content="same-origin" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+  <div class="top-nav">
+    <ul>
+      <li><a href="{% url 'home' %}">BLOG</a></li>
+      <li><a href="{% url 'about' %}">ABOUT</a></li>
+      {% if user.is_authenticated%}
+      <li><a href="{% url 'admin' %}">ADMIN</a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <header class="header_div">
+    <div class="container text-center">
+      <h1 class="fw-bolder">About me</h1>
+      <p class="lead mb-0"><strong>"About me page"</strong></p>
+    </div>
+  </header>
+
+  <div class="header">
+
+    <br/><br/>
+    <div class="about">
+      <img src="{% static 'images/me.jpeg' %}" alt="" height="25%" width="25%px">
+      <div class="text">
+
+
+        <ul>
+          <li><strong>Name(s): {{ user.first_name }}</strong></li>
+          <li><strong>Surname: {{ user.last_name}}</strong></li>
+          <li><strong>Email: {{ user.email}}</strong></li>
+        </ul>
+
+        <br/>
+        <h5><u>{{ user.profile.occupation }}</u></h5>
+
+        <p>{{ user.profile.objective }}</p>
+        <div class="data">
+          <button onclick="myFunction()" type="button" class="btn btn-primary">Message me</button>
+          <button onclick="myFunctionE()" type="button" class="btn btn-primary">Education</button>
+          <button onclick="myFunctionP()" type="button" class="btn btn-primary">Project(s)</button>
+        </div>
+        <br/>
+        <br/>
+      </div>
+    </div>
+
+
+
+    <div id="projects" class="card" style="display: none;">
+      <div class="card-body">
+        {% for project in projects.name %}
+            <h5><strong>{{ project }}</strong></h5>
+        {% endfor %}
+        <button type="button" class="close" onclick="closeAlertP()">&times;</button>
+      </div>
+    </div>
+
+
+    <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" id="education" class="card" style="width: 35rem;">
+      <div class="card-body">
+        <h3 class="card-title">Education Level</h3>
+        <h5><strong>Higher Education and Training (DHET)</strong></h5>
+        <p>Diploma in Computer Systems Engineering <label style="color: blue;"><strong>(Studying...)</strong></label></p>
+        <h5><strong>Basic Education (DBE)</strong></h5>
+        <p>Matric (NSC) - Admission Bachelor 2020 <label style="color: green;"><strong>(Done!)</strong></label></p>
+        <h5><strong>Additional</strong></h5>
+        <p>Udemy - Full Stack Web Development <label style="color: green;"><strong>(Done!)</strong></label></p>
+        <p>TUT - Full Stack Web Development - Fundamental <label style="color: blue;"><strong>(Studying...)</strong></label></p>
+        <button type="button" class="close" onclick="closeAlertE()">&times;</button>
+      </div>
+    </div>
+
+    <div id="customAlert" class="modal" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Message Alert</h5>
+            <button type="button" class="close" onclick="closeAlert()">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              <label for="exampleFormControlInput1" class="form-label">Subject</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="example@JobRecruitment">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Message area</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary">send</button>
+        </div>
+      </div>
+    </div>
+
+    <div align="Center">
+      <dl type"none">
+        <a class="fa-brands fa-github" title="Github" href="https://github.com/emmanuel471"></a>
+        <a class="fa-brands fa-facebook" title="Facebook" href="https://www.facebook.com/emmanuel.mobu.90"></a>
+        <a class="fa-brands fa-linkedin" title="Linkedin" href="https://www.linkedin.com/in/emmanuel-pontsho-87778a210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "></a>
+        <br/><br/>
+      </dl>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>@emmanuel pontsho mobu</p>
+      <br/>
+      <ul>
+        <li><a href="{% url 'home' %}" >BLOG</a></li>
+        <li><a href="{% url 'about' %}" >ABOUT</a></li>
+        {% if user.is_authenticated%}
+        <li><a href="{% url 'admin' %}">ADMIN</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </footer>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
