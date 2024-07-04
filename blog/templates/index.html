@@ -56,6 +56,10 @@
   form button:hover {
     background-color: #0056b3;
   }
+    table, th, td {
+      border:3px solid black;
+    }
+
   </style>
 <body>
   <div class="top-nav">
@@ -70,93 +74,54 @@
   <header class="header_div">
     <div class="container text-center">
       <h1 class="fw-bolder">Welcome To MyBlog!</h1>
-      <p class="lead mb-0"><strong>"My Career Journey In Web Development"</strong></p>
       <p class="lead mb-0">Below is a list languages/markups is used so far in my web desings</p>
     </div>
   </header>
+
+  {% for topic in topics %}
   <div class="container mx-auto flex flex-wrap items-start">
     <div class="w-full pl-5 lg:pl-2 mb-4 mt-4">
       <h1 class="text-3xl lg:text-4xl text-gray-300 font-extrabold"></h1>
-    </div>
-    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
-      <a href="{% url 'article' %}" ><div class="card">
-        <figure class="mb-2">
-          <img src="{% static 'images/sta-je-html.jpg' %}" alt="HTML" class="h-64 ml-auto mr-auto" />
-        </figure>
-        <div class="rounded-lg p-4 bg-purple-700 flex flex-col card-body">
-          <div>
-            <h5 class="text-2xl font-bold aleading-none">HTML</h5>
-          </div>
-          <div class="flex items-center">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">Read more</a>
-          </div>
-        </div>
-      </div></a>
-    </div>
-    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
-      <a href="{% url 'article' %}"><div class="card">
-        <figure class="mb-2">
-          <img src="{% static 'images/css-2.png' %}" alt="CSS" class="h-64 ml-auto mr-auto" />
-        </figure>
-        <div class="rounded-lg p-4 bg-purple-600 flex flex-col card-body">
-          <div>
-            <h5 class="text-2xl font-bold leading-none">Cascading Style Sheets</h5>
-          </div>
-          <div class="flex items-center">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Read more</a>
-          </div>
-        </div>
-      </div></a>
-    </div>
-    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
-      <a href="{% url 'article' %}"><div class="card">
-        <figure class="mb-2">
-          <img src="{% static  'images/javascript.webp' %}" alt="JavaScript" class="h-64 ml-auto mr-auto" />
-        </figure>
-        <div class="rounded-lg p-4 bg-gray-700 flex flex-col card-body">
-          <div>
-            <h5 class="text-2xl font-bold leading-none">JavaScript</h5>
-          </div>
-          <div class="flex items-center">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Read more</a>
-          </div>
-        </div>
-      </div></a>
-    </div>
-    <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
-      <a href="{% url 'article' %}">
-      <div class="card">
-        <figure class="mb-2">
-          <img src="{% static 'images/django-logo-big.jpg' %}" alt="Django" class="h-64 ml-auto mr-auto" />
-        </figure>
-        <div class="rounded-lg p-4 bg-gray-600 flex flex-col card-body">
-          <div>
-            <h5 class="text-2xl font-bold leading-none">Django</h5>
-          </div>
-          <div class="flex items-center">
-            <a href="https://docs.djangoproject.com/en/5.0/">Read more</a>
-          </div>
-        </div>
-      </div>
-    </a>
-    </div>
-  </div>
+    
+      <table class="table" style="width:100%">
+        <thead><tr>
+            <th scope="col">#</th>
+            <th scope="col">Topic :</th>
+            <th scope="col">{{ topic.topic_name}}</th>
+          </tr>
 
-  <div class="container_p">
-    <p>
-      Throughout my journey in web development, I embarked by mastering the foundational languages of HTML and CSS, essential for crafting
-      the structure and aesthetics of websites. Subsequently, I integrated JavaScript into my repertoire, augmenting my projects with dynamic
-      functionality. These three technologies formed the cornerstone of my frontend development skills.
-    </p>
-    <br>
-    <p>
-      Presently, I am immersed in backend development, leveraging the power of Django, a robust Python framework. Django's widespread
-      adoption and versatility make it a preferred choice for developers delving into backend intricacies. This evolution in my skill
-      set marks a significant stride towards comprehensive web development proficiency.
-    </p>
+        </thead>
+      </table>
+
+    </div>
+        {% for article in articles %}
+         <div class="w-full md:w-1/2 lg:w-1/4 pl-5 pr-5 mb-5 lg:pl-2 lg:pr-2">
+           <a href="{% url 'article' %}" ><div class="card">
+            <figure class="mb-2">
+              <img src="{{ article.image.url }}" alt="{{ article.title }}" class="h-64 ml-auto mr-auto">
+            </figure>
+            <div class="rounded-lg p-4 bg-purple-700 flex flex-col card-body">
+              <div>
+                <h5 class="text-2xl font-bold aleading-none">{{article.title}}</h5>
+              </div>
+              <div class="flex items-center">
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">Read more</a>
+                <span>Posted date: {{ article.created_date}}</span>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+    
+        {% empty %}
+            <li>No articles found.</li>
+        {% endfor %}
+    </ul>
+    
   </div>
+  {% endfor %}
   <br/><br/><br/><br/>
-  <!-- Updated Form Section -->
+  <!-- Comment Form Section -->
   <form class="container mx-auto mb-8 px-4 py-6">
     <input type="text" name="name" placeholder="Enter name" required class="mb-4 p-2 border border-gray-300 rounded">
     <input type="email" name="email" placeholder="Enter email" required class="mb-4 p-2 border border-gray-300 rounded">

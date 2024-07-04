@@ -1,8 +1,10 @@
+/* General styles */
 body {
   background: #000942;
   font-family: 'Muli', sans-serif;
   color: white;
 }
+
 .container_p {
   max-width: 800px;
   margin: 20px auto;
@@ -24,6 +26,7 @@ body {
 .container_p p:last-of-type {
   margin-bottom: 0;
 }
+
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -31,24 +34,29 @@ body {
   padding: 20px;
   background: #1a1a2e;
 }
+
 .top-nav ul {
   display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .top-nav ul li {
   margin: 0 15px;
 }
+
 .top-nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
+
 .top-nav ul li a:hover {
   color: #f39c12;
 }
+
 .top-nav button {
   background-color: #f39c12;
   border: none;
@@ -59,120 +67,175 @@ body {
   border-radius: 5px;
   transition: background-color 0.3s;
 }
+
 .top-nav button:hover {
   background-color: #d87d02;
 }
+
 .header_div {
   padding: 50px 0;
   background: #4D618A;
 }
+
 .header_div h1 {
   font-size: 3rem;
   margin-bottom: 10px;
 }
+
 .header_div p {
   font-size: 1.25rem;
 }
+
 .card {
   background: white;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 .card img {
   width: 100%;
   height: auto;
+  transition: transform 0.3s;
 }
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
 .card .card-body {
   padding: 20px;
 }
+
 .card .card-body h5 {
   margin: 0 0 10px;
   font-size: 1.5rem;
-  color: white;
+  color: #333;
 }
+
 .card .card-body a {
-  color: white;
-  text-decoration: underline;
+  color: #4070f4;
+  text-decoration: none;
   transition: color 0.3s;
 }
+
 .card .card-body a:hover {
-  color: #f39c12;
+  color: #1a1a2e;  
 }
+
 footer {
   background: #1a1a2e;
   color: white;
   padding: 20px;
   text-align: center;
 }
+
 footer ul {
   list-style: none;
   padding: 0;
 }
+
 footer ul li {
   display: inline;
   margin: 0 10px;
 }
+
 footer ul li a {
   color: white;
   text-decoration: none;
 }
+
 footer ul li a:hover {
   text-decoration: underline;
 }
 
-.about-us{
+/* Responsive adjustments */
+
+/* Tablets and smaller devices */
+@media (max-width: 1024px) {
+  .container_p {
+    padding: 10px;
+  }
+  .header_div h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Phones and smaller devices */
+@media (max-width: 600px) {
+  .container_p {
+    max-width: 100%;
+  }
+  .header_div {
+    padding: 30px 0;
+  }
+  .header_div h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Adjustments for specific sections */
+
+.about-us {
   height: 100vh;
   width: 100%;
   padding: 90px 0;
   background: #ddd;
 }
-.pic{
+
+.pic {
   height: auto;
-  width:  302px;
-}
-#projects {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-.card-body {
-    padding: 20px;
-    background-color: #E89225;
-}
-.card-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-.card h5 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    color: #555;
-}
-.close {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+  width: 302px;
 }
 
-/* The Modal (background) */
+#projects {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #E89225;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.card h5 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Modal */
 .modal {
-  display: none; /* Hidden by default, but can be controlled by inline style */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -184,17 +247,15 @@ footer ul li a:hover {
   padding-top: 60px;
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 100%;
-  max-width: 600px; /* Limit width */
+  max-width: 600px;
 }
 
-/* The Close Button */
 .close {
   color: #aaa;
   float: right;
@@ -209,8 +270,7 @@ footer ul li a:hover {
   cursor: pointer;
 }
 
-
-.about{
+.about {
   width: 1130px;
   max-width: 85%;
   margin: 0 auto;
@@ -218,47 +278,29 @@ footer ul li a:hover {
   align-items: center;
   justify-content: space-around;
 }
-.text{
+
+.text {
   width: 540px;
 }
-.text h2{
+
+.text h2 {
   font-size: 90px;
   font-weight: 600;
   margin-bottom: 10px;
-
 }
-.text h5{
+
+.text h5 {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 20px;
 }
-span{
+
+span {
   color: #4070f4;
 }
-.text p{
+
+.text p {
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 1px;
-}
-.data{
-  margin-top: 30px;
-}
-
-.data:hover {
-
-}
-
-.hire{
-  font-size: 18px;
-  background: #4070f4;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  padding: 8px 25px;
-  border-radius: 6px;
-  transition: 0.5s;
-}
-.hire:hover{
-  background: #000;
-  border: 1px solid #4070f4;
 }

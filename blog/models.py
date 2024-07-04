@@ -10,12 +10,16 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     occupation = models.CharField(max_length=200, null=False)
     objective = models.TextField(max_length=600, null=False)
+    firstname = models.CharField(max_length=150, null=True)
+    lastname = models.CharField(max_length=150, null=True)
+    email_address = models.EmailField(max_length=200, null=True)
     userimage = models.ImageField(null=False, default=get_default_image)
 
     def __str__(self):
 	    return self.user.username
  
 class Project(models.Model):
+    user = models.ManyToManyField(User)
     name = models.CharField(max_length=100)
 
     def __str__(self):

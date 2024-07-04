@@ -42,16 +42,22 @@
       <div class="text">
 
 
+
+        {% if profile %}
         <ul>
-          <li><strong>Name(s): {{ user.first_name }}</strong></li>
-          <li><strong>Surname: {{ user.last_name}}</strong></li>
-          <li><strong>Email: {{ user.email}}</strong></li>
+          <li><strong>Name(s): {{ profile.firstname }}</strong></li>
+          <li><strong>Surname: {{ profile.lastname}}</strong></li>
+          <li><strong>Email: {{ profile.email_address}}</strong></li>
         </ul>
 
         <br/>
-        <h5><u>{{ user.profile.occupation }}</u></h5>
 
-        <p>{{ user.profile.objective }}</p>
+        <h5><u>{{ profile.occupation }}</u></h5>
+        <p>{{ profile.objective }}</p>
+        {% else %}
+        <p>No profile available.</p>
+        {% endif %}
+
         <div class="data">
           <button onclick="myFunction()" type="button" class="btn btn-primary">Message me</button>
           <button onclick="myFunctionE()" type="button" class="btn btn-primary">Education</button>
@@ -66,8 +72,9 @@
 
     <div id="projects" class="card" style="display: none;">
       <div class="card-body">
-        {% for project in projects.name %}
-            <h5><strong>{{ project }}</strong></h5>
+        <h4>Project(s) built</h4>
+        {% for project in projects %}
+        <h6>{{project.name}}</h6>
         {% endfor %}
         <button type="button" class="close" onclick="closeAlertP()">&times;</button>
       </div>
@@ -77,20 +84,20 @@
     <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" id="education" class="card" style="width: 35rem;">
       <div class="card-body">
         <h3 class="card-title">Education Level</h3>
-        <h5><strong>Higher Education and Training (DHET)</strong></h5>
-        <p>Diploma in Computer Systems Engineering <label style="color: blue;"><strong>(Studying...)</strong></label></p>
-        <h5><strong>Basic Education (DBE)</strong></h5>
-        <p>Matric (NSC) - Admission Bachelor 2020 <label style="color: green;"><strong>(Done!)</strong></label></p>
-        <h5><strong>Additional</strong></h5>
-        <p>Udemy - Full Stack Web Development <label style="color: green;"><strong>(Done!)</strong></label></p>
-        <p>TUT - Full Stack Web Development - Fundamental <label style="color: blue;"><strong>(Studying...)</strong></label></p>
-        <button type="button" class="close" onclick="closeAlertE()">&times;</button>
+        {% for category, qualifications in category_qualifs.items %}
+        <h5><strong>{{ category.name }}</strong></h5>
+        {% for qualif in qualifications %}
+            <p>{{ qualif.qualification }}<label style="color: green;"><strong>({{ qualif.status }})</strong></label></p>
+        {% endfor %}
+    {% endfor %}
+    <button type="button" class="close" onclick="closeAlertE()">&times;</button>
       </div>
     </div>
 
     <div id="customAlert" class="modal" style="display: none;">
       <div class="modal-dialog">
         <div class="modal-content">
+          <h2 style="color: green;">Message me </h2>
           <div class="modal-header">
             <h5 class="modal-title">Message Alert</h5>
             <button type="button" class="close" onclick="closeAlert()">&times;</button>

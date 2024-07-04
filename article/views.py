@@ -1,8 +1,14 @@
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from .models import Topic, Article
 
 def article(request):
-    return render(request, 'article.html')
+    topics = Topic.objects.all()
+    articles = Article.objects.all()
 
-# Create your views here.
+    content = {
+        'topics' : topics,
+        'articles': articles,
+    }
+    
+    return render(request,'article.html',content)
