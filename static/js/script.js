@@ -65,3 +65,5 @@ window.onclick = function(event) {
 
 //Will not throw error, even if called multiple times.
 $(window).on( 'resize', createSlick );
+
+

@@ -5,7 +5,7 @@
   {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Article</title>
+  <title>Error 404</title>
 
   <!-- External CSS libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.3.4/tailwind.min.css">
@@ -29,20 +29,26 @@
 
   <header class="header_div">
     <div class="container text-center">
-      <h1 class="fw-bolder">View Article!</h1>
-      <h2><u>{{ articles.title }}</u></h2>
+      <h1 class="fw-bolder">Error 404</h1>
     </div>
   </header>
 
-  <div class="container mt-4">
-    <div class="card mb-3">
-      <img src="{{ articles.image.url }}" class="card-img-top" alt="..." style="height: 200px;">
-      <div class="card-body">
-        <h5 class="card-title">{{ articles.title }}</h5>
-        <p class="card-text">{{articles.article}}.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated: {{ articles.created_date }}</small></p>
-      </div>
+  <div class="container mt-5">
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">Form Errors:</h4>
+      <ul>
+        {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+        <li>{{ field|title }}: {{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+      </ul>
     </div>
+    {% endif %}
+
+    <!-- Additional content of your error page -->
+
   </div>
 
   <footer class="mt-4">

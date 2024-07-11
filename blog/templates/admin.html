@@ -18,6 +18,8 @@
       <li><a href="{% url 'about' %}">ABOUT ME</a></li>
       {% if user.is_authenticated %}  
       <li><a href="{% url 'admin' %}">ADMIN</a></li>
+      <li><a href="{% url 'create_topic' %}">CREATE TOPIC</a></li>
+      <li><a href="{% url 'create_article' %}">CREATE ARTICLE</a></li>
       {% endif %}
     </ul>
   </div>
@@ -40,6 +42,8 @@
         <li><a href="{% url 'about' %}">About Me</a></li>
         {% if user.is_authenticated %}  
         <li><a href="{% url 'admin' %}">ADMIN</a></li>
+        <li><a href="{% url 'create_topic' %}">CREATE TOPIC</a></li>
+        <li><a href="{% url 'create_article' %}">CREATE ARTICLE</a></li>
         {% endif %}
       </ul>
     </div>

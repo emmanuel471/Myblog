@@ -8,11 +8,9 @@ from .models import Project, Profile, Education, Category
 # Create your views here.
 def home(request):
     topics = Topic.objects.all()
-    articles = Article.objects.all()
-    print(f"Articles: {articles}")  # Debugging line
+    
     context = {
         'topics': topics,
-        'articles': articles,
     }
     return render(request, 'index.html', context)
 
