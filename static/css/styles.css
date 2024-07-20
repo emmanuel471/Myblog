@@ -305,3 +305,111 @@ span {
   letter-spacing: 1px;
 }
 
+form {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 100%; /* Full width of container */
+  max-width: 400px; /* Set maximum width */
+  margin: 0 auto; /* Center align horizontally */
+}
+
+
+form input,
+form textarea {
+  width: calc(100% - 20px); /* Adjusted width for padding */
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #333;
+  box-sizing: border-box;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+  table, th, td {
+    border:3px solid black;
+}
+
+
+
+
+
+
+
+
+
+/* Toast container */
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #28a745; /* Green background color */
+  border: none; /* No border */
+  color: #ffffff; /* White text color */
+  padding: 1rem; /* Padding around the content */
+  margin-bottom: 1rem; /* Space between toasts */
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.toast .toast-body {
+  flex-grow: 1; /* Allow the body to take up remaining space */
+  font-size: 1rem; /* Adjust font size */
+}
+
+.btn-close-red {
+  background-color: #dc3545; /* Red background for the close button */
+  border: none; /* Remove default border */
+  width: 1.5rem; /* Adjust size */
+  height: 1.5rem; /* Adjust size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Round shape */
+  color: #ffffff; /* White color for close icon */
+  font-size: 1rem; /* Adjust icon size */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.btn-close-red:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between elements */
+}
+
+.me-2 {
+  margin-right: 0.5rem; /* Right margin for spacing */
+}
+
+.m-auto {
+  margin: auto; /* Center align the button vertically */
+}
+
