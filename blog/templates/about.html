@@ -62,7 +62,6 @@
         {% endif %}
 
         <div class="data">
-          <button onclick="myFunction()" type="button" class="btn btn-primary">Message me</button>
           <button onclick="myFunctionE()" type="button" class="btn btn-primary">Education</button>
           <button onclick="myFunctionP()" type="button" class="btn btn-primary">Project(s)</button>
         </div>
@@ -94,31 +93,6 @@
         {% endfor %}
     {% endfor %}
     <button type="button" class="close" onclick="closeAlertE()">&times;</button>
-      </div>
-    </div>
-
-    <div id="customAlert" class="modal" style="display: none;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <h2 style="color: green;">Message me </h2>
-          <div class="modal-header">
-            <h5 class="modal-title">Message Alert</h5>
-            <button type="button" class="close" onclick="closeAlert()">&times;</button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              <label for="exampleFormControlInput1" class="form-label">Subject</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="example@JobRecruitment">
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Message area</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary">send</button>
-        </div>
       </div>
     </div>
 

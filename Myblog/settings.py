@@ -10,6 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_!zvj_)i!^710xc0*58lp!l*ik4x(7_kgbr@wh(bseybr6w&gr'
 
+#Environment Viriable 
+email_pass = os.environ.get('MY_EMAIL_PASSWORD')
+db_username = os.environ.get('BLOG_DB_USERNAME')
+db_password = os.environ.get('BLOG_DB_PASSWORD')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -63,10 +68,23 @@ WSGI_APPLICATION = 'Myblog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#DATABASES = {
+#   'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME' : 'BlogDB',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
+        'USER': db_username,
+        'PASSWORD': db_password,
     }
 }
 
@@ -114,6 +132,16 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'emmanuelpontsho553@gmail.com'
+EMAIL_HOST_PASSWORD = email_pass
+EMAIL_USE_TLS = True
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

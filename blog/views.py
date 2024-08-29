@@ -1,9 +1,17 @@
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.conf import settings
 from  article.models import Article, Topic
 from .models import Project, Profile, Education, Category
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # Create your views here.
 def home(request):
@@ -38,3 +46,4 @@ def about(request):
 
 def admin(request):
 	return render(request, 'admin.html')
+

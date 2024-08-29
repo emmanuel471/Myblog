@@ -1,5 +1,6 @@
+
 from django import forms 
-from .models import Article, Topic
+from .models import Article, Topic, Comment
 
 class InputForm(forms.Form):
      name = forms.CharField()
@@ -25,3 +26,9 @@ class ArticleForm(forms.ModelForm):
           
 class MyForm(forms.Form):
     name = forms.CharField(max_length=300)
+    
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment  # This should be the model class, not a string
+        fields = ['name', 'body'] 
+    

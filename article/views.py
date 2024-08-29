@@ -2,16 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
 from .models import Topic, Article
-from .forms import ArticleForm, InputForm, MyForm, TopicForm
-
-def article(request, pk):
-    articles = Article.objects.get(id=pk)
-
-    content = {
-        'articles': articles,
-    }
-    
-    return render(request,'article.html',content)
+from .forms import ArticleForm, CommentForm, InputForm, MyForm, TopicForm
 
 
 def input_data(request):
@@ -61,3 +52,30 @@ def error_404(request):
     if request.method == 'POST' and not form.is_valid():
         return render(request, 'error_404.html', {'form': form})
     return render(request, 'error_404.html')
+
+
+
+def article(request, pk):
+    articles = Article.objects.get(id=pk)
+    article = get_object_or_404(Article, pk=pk)
+    comments = article.comments.all()  # Fetch related comments
+    new_comment = None
+
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.article = article
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    context = {
+        'articles': articles,
+        'article': article,
+        'comments': comments,
+        'new_comment': new_comment,
+        'comment_form': comment_form,
+    }
+
+    return render(request, 'article.html', context)
