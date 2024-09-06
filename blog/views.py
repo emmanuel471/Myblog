@@ -9,11 +9,9 @@ from .models import Project, Profile, Education, Category
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 import logging
-
 logger = logging.getLogger(__name__)
 
 
-# Create your views here.
 def home(request):
     topics = Topic.objects.all()
     

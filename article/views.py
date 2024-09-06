@@ -1,8 +1,11 @@
 from django.contrib import messages
-from django.shortcuts import redirect, render
-from django.shortcuts import render, get_object_or_404
-from .models import Topic, Article
+from django.shortcuts import redirect,render, get_object_or_404
+from .models import Article
 from .forms import ArticleForm, CommentForm, InputForm, MyForm, TopicForm
+
+from django.contrib import messages
+from .models import Article
+from .forms import ArticleForm
 
 
 def input_data(request):
@@ -53,12 +56,33 @@ def error_404(request):
         return render(request, 'error_404.html', {'form': form})
     return render(request, 'error_404.html')
 
+def delete_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        article.delete()
+        messages.success(request, 'Article deleted successfully!')
+        return redirect('home')
+    return render(request, 'confirm_delete.html', {'article': article})
+
+def update_article(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('article', pk=article.pk)
+    else:
+        form = ArticleForm(instance=article)
+
+    return render(request, 'update_article.html', {'form': form})
+
 
 
 def article(request, pk):
     articles = Article.objects.get(id=pk)
     article = get_object_or_404(Article, pk=pk)
-    comments = article.comments.all()  # Fetch related comments
+    comments = article.comments.all()  
     new_comment = None
 
     if request.method == 'POST':

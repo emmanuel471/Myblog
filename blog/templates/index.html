@@ -26,6 +26,15 @@
       <li><a href="{% url 'admin' %}">ADMIN</a></li>
       <li><a href="{% url 'create_topic' %}">CREATE TOPIC</a></li>
       <li><a href="{% url 'create_article' %}">CREATE ARTICLE</a></li>
+      <li class="list-inline-item">
+        <span class="user-details">Hello, {{ user.username }}!</span>
+      </li>
+      <li class="list-inline-item">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary">LOGOUT</button>
+        </form>
+      </li>
       {% endif %}
     </ul>
   </div>
